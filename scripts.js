@@ -1,7 +1,12 @@
 /**
  * ======================
  * grid traveler
+ * say that you are a grid traveler ona 2D grid
+ * you begin in the top-left corner and your gaol is to
+ * travel to the bottom-right corner. you may only move down or right
+ * in how may ways can you travel to the goal on a grid with dimensions m*n?
  * ======================
+ * see the solution
  */
 // m=rows and n=columns
 const gridTraveler = (rows, columns) => {
@@ -41,3 +46,20 @@ console.log(gridTravelerMemo(18, 18)); //very fast processing time
 console.log(gridTraveler(0, 1));
 console.log(gridTraveler(1, 1));
 // console.log(gridTraveler(18, 18)); //resource intensive, very slow processing time
+
+/**
+ * =====================
+ * MEMOIZARION RECIPE
+ * ----------------------
+ * 1. MAKE THE CODE WORK
+ * 1.1 visualize the problem as a tree
+ * 1.2 implement the tree using recursion (recursive function)
+ * 1.3 test the function
+ *
+ * 2.MAKE IT EFFICIENT
+ * 2.1 add a memo object--> { keys=arguments to the function and values are the returns values of the function}
+ * 2.1.0 memo obj must be passed to all recursive funcions. note that the memo is declared at the top level function
+ * 2.2 add a base case to return memo values
+ * 2.3 store return values into the memo
+ * =====================
+ */
