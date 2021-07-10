@@ -19,10 +19,25 @@ const gridTravelerMemo = (rows, columns, memo = {}) => {
   if (rows === 1 && columns === 1) return 1;
   if (rows === 0 || columns === 0) return 0;
   memo[key] =
-    gridTravelerMemo(rows - 1, columns) + gridTravelerMemo(rows, columns - 1);
+    gridTravelerMemo(rows - 1, columns, memo) +
+    gridTravelerMemo(rows, columns - 1, memo);
   return memo[key];
 };
 
+/**
+ * =============================
+ * NOTE: When the function is called that the memo object
+ * will be initialized and then passed down to the recursive
+ * functions. thus, the memo has to passed to the recursive functions
+ * `the idea is to remember any previous calculation and not repeat the
+ * since it slows down performance`
+ * ======================
+ */
+
 console.log(gridTravelerMemo(0, 1));
 console.log(gridTravelerMemo(1, 1));
-console.log(gridTravelerMemo(2, 3));
+console.log(gridTravelerMemo(18, 18)); //very fast processing time
+
+console.log(gridTraveler(0, 1));
+console.log(gridTraveler(1, 1));
+// console.log(gridTraveler(18, 18)); //resource intensive, very slow processing time
